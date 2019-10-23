@@ -1,0 +1,21 @@
+.player-options {
+  display: flex;
+  align-items: center;
+}
+
+.player-options-item:last-child {
+  position: relative;
+  margin-left: 32px;
+  padding-left: 20px;
+}
+
+.player-options-item:last-child:before {
+  content: "";
+  position: absolute;
+  top: 3px;
+  left: 0;
+  height: 28px;
+  width: 1px;
+  background-color: #dedee3;
+  background-color: var(--default-border-color);
+}

@@ -1,0 +1,150 @@
+.player-queuelist {
+  position: absolute;
+  bottom: 70px;
+  right: 0;
+  width: 480px;
+  height: 580px;
+  max-height: calc(100vh - 140px);
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  background-color: #fff;
+  background-color: var(--queuelist-background-color);
+  border-radius: 6px;
+  transition-property: transform,opacity;
+  transition-duration: .2s;
+  /* transform: translateY(100px); */
+  transition-timing-function: cubic-bezier(0.66, -0.41, 1, 1);
+}
+
+.queuelist-head {
+  display: flex;
+  align-items: center;
+  height: 65px;
+  padding: 9px 24px;
+  box-sizing: border-box;
+  border-bottom: 1px solid var(--queuelist-head-border-color);
+}
+
+.queuelist-head-title {
+  flex-grow: 1;
+  color: #32323d;
+  color: var(--main-text-color)
+}
+
+.cloudcast-item {
+  display: flex;
+  padding: 6px 24px;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.cloudcast-upnext.now-playing {
+  background-color: #f8f8f8;
+  background-color: var(--queue-item-active-color);
+  pointer-events: none;
+}
+
+.cloudcast-upnext.now-playing .cloudcast-upnext-image::before {
+  opacity: 1;
+}
+
+.cloudcast-upnext.now-playing .equalizer {
+  top: 18px;
+  left: 18px;
+}
+
+.cloudcast-upnext.now-playing.pause .cloudcast-upnext-image::before {
+  opacity: 0;
+}
+
+.cloudcast-upnext.now-playing.pause .equalizer {
+  visibility: hidden;
+}
+
+.cloudcast-item:hover {
+  background: #f8f8f8;
+  background-color: var(--queue-item-active-color);
+}
+
+.cloudcast-item:hover .play-hover {
+  visibility: visible;
+}
+
+.cloudcast-item:hover .cloudcast-upnext-image::before {
+  opacity: 1;
+}
+
+.cloudcast-upnext-image {
+  position: relative;
+  width: 48px;
+  height: auto;
+  overflow: hidden;
+}
+
+.cloudcast-upnext-image::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0,0,0,0.4);
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.play-hover {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  background-color: rgba(22,32,41,.8);
+  visibility: hidden;
+  user-select: none;
+}
+
+.cloudcast-upnext-image .svg-icon-btn.is-highlight {
+  color: #fff;
+  font-size: 16px;
+}
+
+.cloudcast-upnext-image .svg-icon-btn:hover {
+  background: initial;
+}
+
+.cloudcast-upnext-details {
+  display: flex;
+  flex-direction: column;
+  margin-left: 12px;
+}
+
+.cloudcast-name {
+  font-size: 14px;
+  color: #32323d;
+  color: var(--main-text-color);
+}
+
+.cloudcast-owner {
+  font-size: 13px;
+  color: #ababab;
+}
+
+.queue-enter {
+  opacity: 0;
+  transform: translateY(100px);
+}
+.queue-enter-active {
+  opacity: 1;
+  transform: translateX(0);
+  transition: opacity 350ms, transform 350ms;
+  transition-timing-function: cubic-bezier(0, 0, 0, 1.2);
+}
+.queue-exit {
+  opacity: 1;
+}
+.queue-exit-active {
+  opacity: 0;
+  transform: translateY(100px);
+  transition: opacity 350ms, transform 350ms;
+  transition-timing-function: cubic-bezier(0.66, -.41, 1, 1);
+}

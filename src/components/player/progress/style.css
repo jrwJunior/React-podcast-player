@@ -1,0 +1,124 @@
+.player-track {
+  flex: 1;
+  margin: auto;
+  max-width: 575px;
+  width: 570px;
+}
+
+/* .player-track .track-heading {
+  align-items: center;
+  color: #32323d;
+  display: flex;
+  font-size: 14px;
+  margin-bottom: 4px;
+  min-height: 32px;
+} */
+
+.slider {
+  align-items: center;
+  display: flex;
+  height: 12px;
+  position: relative;
+  width: 100%;
+}
+
+.slider-toltip {
+  background-color: #32323d;
+  border-radius: 4px;
+  bottom: 20px;
+  color: #fff;
+  left: 0;
+  margin-left: -24px;
+  padding: 4px 0;
+  position: absolute;
+  text-align: center;
+  width: 48px;
+  font-size: 12px;
+  line-height: 1.4;
+}
+
+.is-active .slider-track-input[type=range]::-webkit-slider-thumb {
+  transform: scale(1.8);
+  transition: all 200ms;
+}
+
+.is-inactive .slider-track-input[type=range]::-webkit-slider-thumb {
+  transform: scale(1);
+  transition: all 200ms;
+}
+
+.player-track .track-seekbar .slider-counter {
+  position: absolute;
+  top: -3px;
+}
+
+.player-track .track-seekbar .slider-counter-current {
+  right: 100%;
+}
+
+.player-track .track-seekbar .slider-counter-max {
+  left: 100%;
+}
+
+.slider-counter-current {
+  padding-right: 12px;
+}
+
+.slider-counter-max {
+  padding-left: 12px;
+}
+
+.slider-counter {
+  font-size: 12px;
+  color: #92929d;
+}
+
+.slider-track {
+  flex: 1;
+  height: 2px;
+  position: relative;
+}
+
+.slider-track-default {
+  border-radius: 4px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  background-color: #dedee3;
+  background-color: var(--slider-track-default-color);
+  width: 100%;
+}
+
+.slider-track-active {
+  border-radius: 4px;
+  height: 100%;
+  left: 0;
+  position: absolute;
+  top: 0;
+  background-color: #32323d;
+  background-color: var(--slider-track-active);
+  max-width: 100%;
+  width: 0;
+}
+
+.slider-track-input {
+  -webkit-appearance: none;
+  background: rgba(0,0,0,0);
+  cursor: pointer;
+  height: 30px;
+  left: -6px;
+  margin-top: -15px;
+  padding: 0;
+  position: absolute;
+  top: 50%;
+  width: calc(100% + 12px);
+}
+
+.slider-track-input[type=range]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background: var(--slider-track-input);
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}

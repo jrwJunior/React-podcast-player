@@ -1,0 +1,69 @@
+/* controls */
+.svg-icon-group {
+  display: flex;
+  align-items: center;
+}
+
+.svg-icon-group-item {
+  margin-left: 4px;
+}
+
+.svg-icon-group-item:first-child {
+  margin-left: 0;
+}
+
+.svg-icon-btn {
+  position: relative;
+  font-size: 16px;
+  color: #32323d;
+  color: var(--main-text-color);
+  background-color: rgba(0,0,0,0);
+  border: 0;
+  border-radius: 50%;
+  /* overflow: hidden; */
+  padding: .5em;
+  transition-duration: .15s;
+  transition-property: background-color;
+  cursor: pointer;
+}
+
+.svg-icon-btn:hover {
+  background-color: #efeff2;
+  background-color: var(--default-hover-color);
+}
+
+.svg-icon-btn.is-highlight {
+  font-size: 24px;
+}
+
+.svg-icon-btn.is-active {
+  background-color: #efeff2;
+  background-color: var(--default-hover-color);
+}
+
+.svg-icon {
+  display: block;
+  fill: currentColor;
+  stroke: currentColor;
+  stroke-width: 0;
+}
+
+.seek-button {
+  position: relative;
+}
+
+.seek-button:disabled {
+  cursor: default;
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.seek-title {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-family: 'Cabin', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  transform: translate(-50%, -50%);
+}

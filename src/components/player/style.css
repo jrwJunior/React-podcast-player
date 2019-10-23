@@ -1,0 +1,112 @@
+/* podcast-player */
+:root {
+  --player-background-color: #fff;
+  --default-border-color: #dedee3;
+  --main-text-color: #32323d;
+  --default-hover-color: #efeff2;
+  --slider-track-default-color: #dedee3;
+  --popper-background-color: #fff;
+  --switch-active-color: #32323d;
+  --popper-default-text-color: #52525d;
+  --popper-background-color: #fff;
+  --popper-shadow: 0 4px 20px 0 rgba(25,25,34,0.24);
+  --tooltip-background-color: #1c1c25;
+  --slider-track-input: #323232;
+  --slider-track-active: #32323d;
+  --queuelist-background-color: #fff;
+  --queuelist-head-border-color: #e5e5e5; 
+  --queue-item-active-color: #f8f8f8;
+}
+
+[data-theme=dark] {
+  --player-background-color: #23232d;
+  --default-border-color: #32323d;
+  --main-text-color: #fff;
+  --slider-track-default-color: #42424d;
+  --default-hover-color: #32323d;
+  --popper-background-color: #32323d;
+  --popper-shadow: 0 4px 20px 0 rgba(0,0,0,0.24);
+  --switch-active-color: #ef5466;
+  --tooltip-background-color: #32323d;
+  --slider-track-input: #fff;
+  --slider-track-active: #fff;
+  --queuelist-background-color: #121216;
+  --queuelist-head-border-color: #262626; 
+  --queue-item-active-color: #23232d;
+}
+
+.player {
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 300;
+  display: flex;
+  align-items: center;
+  height: 80px;
+  min-width: 990px;
+  background-color: #fff;
+  background-color: var(--player-background-color);
+  border-top: 1px solid #dedee3;
+  border-top: 1px solid var(--default-border-color);
+}
+
+.icon-queue path {
+  fill: currentColor;
+}
+
+.svg-fill {
+  fill: currentColor;
+}
+
+.equalizer {
+  position: absolute;
+  top: 17px;
+  left: 10px;
+  width: 12px;
+  height: 12px;
+}
+
+.equalizer-dark {
+  background: url('../../source/dark.c610b4800820071e9b19f0542110499c.gif') no-repeat center/contain;
+}
+
+.equalizer-inverse {
+  background: url('../../source/inverse.ed90d7bca6550746a2a2c5d538d62efe.gif') no-repeat center/contain;
+}
+
+.input-switch {
+  background-color: #dedee3;
+  border-radius: 40px;
+  cursor: pointer;
+  display: inline-block;
+  padding: 1px;
+  position: relative;
+  width: 32px;
+  transition-duration: .15s;
+  transition-property: background-color;
+}
+
+.input-switch:after {
+  background-color: #fff;
+  border-radius: 50%;
+  content: "";
+  display: block;
+  height: 14px;
+  width: 14px;
+  transition-duration: .15s;
+  transition-property: transform;
+}
+
+.input-switch.is-checked:after {
+  transform: translate3d(16px,0,0);
+}
+
+.input-switch.is-checked {
+  background-color: #32323d;
+  background-color: var(--switch-active-color);
+}
+
+.input-control {
+  display: none;
+}

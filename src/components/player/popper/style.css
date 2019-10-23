@@ -1,0 +1,60 @@
+.popper-content {
+  background-color: #fff;
+  background-color: var(--popper-background-color);
+  border-radius: 4px;
+  box-shadow: 0 4px 20px 0 rgba(25,25,34,.24);
+  box-shadow: var(--popper-shadow);
+  color: #52525d;
+  color: var(--popper-default-text-color);
+  padding: 16px;
+  position: relative;
+  width: 165px;
+}
+
+.label-mode {
+  align-items: center;
+  display: flex;
+  flex: 1;
+}
+
+.popper-wrapper {
+  position: relative;
+}
+
+.popper {
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.label-control {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+
+.label-text {
+  font-size: 14px;
+  color: #32323d;
+  color: var(--main-text-color);
+  margin-right: 5px;
+  /* max-width: 170px; */
+}
+
+.popper[x-placement=top] .popper-arrow {
+  border-bottom-width: 0;
+  border-top-color: #fff;
+  border-top-color: var(--popper-background-color);
+  bottom: -6px;
+  left: calc(50% - 6px);
+  margin-bottom: 0;
+  margin-top: 0;
+}
+
+.popper-arrow {
+  border: 6px solid rgba(0,0,0,0);
+  height: 0;
+  position: absolute;
+  width: 0;
+}
