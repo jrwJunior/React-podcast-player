@@ -7,24 +7,16 @@ import QueuePanel from '../queue-panel/panel_container';
 import Nextup from './next_up';
 
 class NextupContainer extends Component {
-  state = {
-    isOpenQueue: false
-  }
-
   componentDidMount() {
     this.props.setTheShowToQueue(this.props.playlist);
   }
 
   handlerSwitchQueue = () => {
-    this.setState(({ isOpenQueue }) => {
-      return {
-        isOpenQueue: !isOpenQueue
-      }
-    });
+    this.props.setVisibilityPanel();
   }
 
   render() {
-    const { isOpenQueue } = this.state;
+    const { isOpenQueue } = this.props;
     const { onSwitchControlPlaying } = this.props;
     
     return(
@@ -50,10 +42,21 @@ class NextupContainer extends Component {
   }
 }
 
-const mapDispatchToProps = dispatch => {
+const mapStateToProps = ({ radioShowsQueue }) => {
+  const { isOpenQueue } = radioShowsQueue;
+
   return {
-    setTheShowToQueue: payload => dispatch({ type: actionTypes.SET_PLAYER_QUEUE_SHOW, payload })
+    isOpenQueue
   }
 }
 
-export default connect(null, mapDispatchToProps)(NextupContainer);
+const mapDispatchToProps = dispatch => {
+  return {
+    setTheShowToQueue: payload => dispatch({ type: actionTypes.SET_PLAYER_QUEUE_SHOW, payload }),
+    setVisibilityPanel: () => dispatch({ type: actionTypes.SET_VISIBILITY_QUEUE_PANEL })
+  }
+}
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps)(NextupContainer);

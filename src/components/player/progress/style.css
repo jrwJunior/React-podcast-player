@@ -47,6 +47,14 @@
   transition: all 200ms;
 }
 
+.slider-counter-current {
+  padding-right: 12px;
+}
+
+.slider-counter-max {
+  padding-left: 12px;
+}
+
 .player-track .track-seekbar .slider-counter {
   position: absolute;
   top: -3px;
@@ -58,14 +66,6 @@
 
 .player-track .track-seekbar .slider-counter-max {
   left: 100%;
-}
-
-.slider-counter-current {
-  padding-right: 12px;
-}
-
-.slider-counter-max {
-  padding-left: 12px;
 }
 
 .slider-counter {
@@ -107,12 +107,12 @@
   background: rgba(0,0,0,0);
   cursor: pointer;
   height: 30px;
-  left: -6px;
+  left: -1px;
   margin-top: -15px;
   padding: 0;
   position: absolute;
   top: 50%;
-  width: calc(100% + 12px);
+  width: calc(100% + 2px);
 }
 
 .slider-track-input[type=range]::-webkit-slider-thumb {

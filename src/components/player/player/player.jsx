@@ -16,7 +16,8 @@ const Player = props => {
     onUpdateProgress,
     onSetProgress,
     onClearInterval,
-    onService,
+    onUpdateData,
+    onUpdateAudioTime,
     ...rest
   } = props;
 
@@ -28,12 +29,12 @@ const Player = props => {
             onSwitchControlPlaying={ onSwitchControlPlaying }
             onSeekForward={ onSeekForward }
             onSeekBack={ onSeekBack }
-            { ...rest }
+            onUpdateAudioTime={ onUpdateAudioTime }
           />
           <Clodcast
             { ...rest }
             getData={ (data, setClodcastDetails) => (
-              onService(data).then(({ title:show, author, cover }) => {
+              onUpdateData(data).then(({ title:show, author, cover }) => {
                 setClodcastDetails({
                   show,
                   author,

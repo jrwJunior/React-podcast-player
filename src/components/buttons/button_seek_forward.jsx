@@ -8,6 +8,7 @@ const SeekBtnForward = props => {
       type="button"
       data-tooltip='Keep tapping to seek faster'
       onClick={ props.onSeekForward }
+      disabled={ props.disabled }
     >
       <div className='seek-button-wrapper'>
         <svg className='svg-icon' height="20px" viewBox="0 0 512 512" width="20px">

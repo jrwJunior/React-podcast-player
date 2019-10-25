@@ -29,7 +29,9 @@ const mapDispatchToProps = dispatch => {
   return {
     setAudioPlaying: payload => dispatch({ type: actionTypes.SET_PLAYER_PLAYING, payload }),
     setAudioProgress: payload => dispatch({ type: actionTypes.SET_PLAYER_PROGRESS, payload }),
-    setAudioDuration: payload => dispatch({ type: actionTypes.SET_PLAYER_DURATION, payload })
+    setAudioDuration: payload => dispatch({ type: actionTypes.SET_PLAYER_DURATION, payload }),
+    setRadioShowState: payload => dispatch({ type: actionTypes.SET_REDIO_SHOW_STATE, payload }),
+    setLoading: () => dispatch({ type: actionTypes.SET_LOADING })
   }
 }
 

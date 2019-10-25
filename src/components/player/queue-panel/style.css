@@ -3,7 +3,7 @@
   bottom: 70px;
   right: 0;
   width: 480px;
-  height: 580px;
+  height: 525px;
   max-height: calc(100vh - 140px);
   box-shadow: 0 0 8px rgba(0,0,0,0.1);
   background-color: #fff;
@@ -31,6 +31,7 @@
 }
 
 .cloudcast-item {
+  position: relative;
   display: flex;
   padding: 6px 24px;
   cursor: pointer;
@@ -43,8 +44,14 @@
   pointer-events: none;
 }
 
-.cloudcast-upnext.now-playing .cloudcast-upnext-image::before {
+.cloudcast-upnext-image.is-active:before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(0,0,0,0.4);
   opacity: 1;
+  transition: opacity 0.15s;
 }
 
 .cloudcast-upnext.now-playing .equalizer {
@@ -52,17 +59,13 @@
   left: 18px;
 }
 
-.cloudcast-upnext.now-playing.pause .cloudcast-upnext-image::before {
-  opacity: 0;
-}
-
-.cloudcast-upnext.now-playing.pause .equalizer {
-  visibility: hidden;
-}
-
 .cloudcast-item:hover {
   background: #f8f8f8;
   background-color: var(--queue-item-active-color);
+}
+
+.cloudcast-item:hover .cloudcast-action-remove {
+  opacity: 1;
 }
 
 .cloudcast-item:hover .play-hover {
@@ -147,4 +150,31 @@
   transform: translateY(100px);
   transition: opacity 350ms, transform 350ms;
   transition-timing-function: cubic-bezier(0.66, -.41, 1, 1);
+}
+
+.cloudcast-action-remove {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  display: flex;
+  justify-content: center;
+  height: 28px;
+  width: 28px;
+  font-size: 14px;
+  line-height: 28px;
+  color: #92929d;
+  color: var(--cloudcast-queue-action-remove-color);
+  text-align: center;
+  border-radius: 50%;
+  opacity: 0;
+  cursor: pointer;
+  transition-duration: .15s;
+  transition-property: background-color,color;
+}
+
+.cloudcast-action-remove:hover {
+  background-color: #fff;
+  background-color: var(--default-background-color);
+  color: #42424d;
+  color: var(--cloudcast-queue-action-remove-color-hover);
 }

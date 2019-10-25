@@ -5,6 +5,7 @@
 }
 
 .svg-icon-group-item {
+  position: relative;
   margin-left: 4px;
 }
 
@@ -34,6 +35,12 @@
 
 .svg-icon-btn.is-highlight {
   font-size: 24px;
+}
+
+.svg-icon-btn.is-highlight:disabled {
+  cursor: default;
+  opacity: 0.4;
+  pointer-events: none;
 }
 
 .svg-icon-btn.is-active {

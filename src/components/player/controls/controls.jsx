@@ -6,30 +6,34 @@ import Play from '../../buttons/button_play';
 import Pause from '../../buttons/button_pause';
 import SeekBack from '../../buttons/button_seek_back';
 import SeekForward from '../../buttons/button_seek_forward';
+import Spinner from '../spinner/spinner';
 
 const ControlsView = props => {
   const { 
     nowPlaying,
-    progress,
     onSwitchControlPlaying,
     onSeekForward,
     onSeekBack,
+    onPlayerDisabledSeekBack,
+    onPlayerDisabledSeekForward
   } = props;
 
   return(
     <ButtonGroup>
       <li className='svg-icon-group-item'>
         <SeekBack
-          disabled={ !(progress >= 15) }
+          disabled={ onPlayerDisabledSeekBack() || props.load }
           onSeekBack={ onSeekBack }
         />
       </li>
       <li className='svg-icon-group-item'>
-        { !nowPlaying ? <Play onPlay={ onSwitchControlPlaying } /> : <Pause onPause={ onSwitchControlPlaying } /> }
+        { !nowPlaying ? <Play onPlay={ onSwitchControlPlaying } disabled={ props.load } /> : <Pause onPause={ onSwitchControlPlaying } disabled={ props.load } /> }
+        { props.load ? <Spinner/> : null }
       </li>
       <li className='svg-icon-group-item'>
         <SeekForward
           onSeekForward={ onSeekForward }
+          disabled={ onPlayerDisabledSeekForward() || props.load }
         />
       </li>
     </ButtonGroup>

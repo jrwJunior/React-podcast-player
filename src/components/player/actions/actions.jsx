@@ -1,5 +1,5 @@
 import React from 'react';
-import Popper from '../popper/popper';
+import Popper from '../popper/popper_container';
 import './style.css';
 
 const Actions = () =>  {

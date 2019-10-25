@@ -1,6 +1,7 @@
 {
   "name": "podcast-player",
   "version": "0.1.0",
+  "homepage": "https://jrwjunior.github.io/podcast-player/",
   "private": true,
   "dependencies": {
     "prop-types": "^15.7.2",
@@ -14,7 +15,8 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build"
+    "build": "react-scripts build",
+    "deploy": "cp ./build/index.html ./build/404.html && gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -32,6 +34,7 @@
     ]
   },
   "devDependencies": {
-    "node-sass": "^4.12.0"
+    "node-sass": "^4.12.0",
+    "gh-pages": "^2.1.1"
   }
 }

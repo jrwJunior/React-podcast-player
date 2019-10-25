@@ -3,7 +3,8 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = {
   nowPlaying: false,
   progress: 0,
-  duration: 0
+  duration: 0,
+  load: false
 }
 
 const recordsPlayerReducer = (state = initialState, action) => {
@@ -23,6 +24,11 @@ const recordsPlayerReducer = (state = initialState, action) => {
         ...state,
         duration: action.payload
       };
+    case actionTypes.SET_LOADING:
+      return {
+        ...state,
+        load: !state.load
+      }
     default:
       return state;
   }

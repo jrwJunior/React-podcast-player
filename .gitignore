@@ -5,6 +5,12 @@
 /.pnp
 .pnp.js
 
+/dist
+/build
+src/songs
+
+npm-debug.log*
+
 # testing
 /coverage
 

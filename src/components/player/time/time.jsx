@@ -46,7 +46,7 @@ class Time extends Component {
 
   render() {
     return(
-      this.getFullTime()
+      <span>{ this.getFullTime() }</span>
     )
   }
 }

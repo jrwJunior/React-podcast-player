@@ -8,7 +8,6 @@ const Control = props => {
     return(
       <span className='play-hover'>
         <Play onPlay={ () => {
-          console.log(id)
           onUpdateShowId(id);
           return onSwitchControlPlaying();
         }} />
@@ -16,7 +15,7 @@ const Control = props => {
     )
   }
 
-  return <span className='equalizer equalizer-inverse'/>
+  return null
 }
 
 export default Control;

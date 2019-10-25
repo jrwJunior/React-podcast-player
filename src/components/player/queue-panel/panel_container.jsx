@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../../actions/actionTypes';
-import PropTypes from 'prop-types';
+import { Scrollbars } from 'react-custom-scrollbars';
 
 import QueuePanelView from './panel';
 import QueueHead from './head';
@@ -34,7 +35,7 @@ class QueuePanelContainer extends Component {
 
     return(
       <span className="up-next-learn">
-        To add shows, & podcasts to up next use the buttons marked
+        there is no show in line
       </span>
     )
   }
@@ -47,9 +48,14 @@ class QueuePanelContainer extends Component {
         <QueueHead
           onClose={ onSwitchQueue }
         />
-        <div className='queuelist-content'>
-        { this.getDataQueue() }
-        </div>
+        <Scrollbars
+          style={{ height: 'calc(100% - 65px)' }}
+          renderThumbVertical={props => <div {...props} className="thumb-vertical"/>}
+        >
+          <div className='queuelist-content'>
+            { this.getDataQueue() }
+          </div>
+        </Scrollbars>
       </QueuePanelView>
     )
   }
@@ -58,17 +64,19 @@ class QueuePanelContainer extends Component {
 const mapStateToProps = ({radioShowsQueue, radioShowState, recordsPlayer}) => {
   const { nowPlaying } = recordsPlayer;
   const { playingShowId } = radioShowState;
+  const { dataQueue } = radioShowsQueue;
 
   return {
     nowPlaying,
     playingShowId,
-    ...radioShowsQueue,
+    dataQueue,
   };
 }
 
 const mapDispatchToProps = dispatch => {
   return {
-    setRadioShowState: payload => dispatch({ type: actionTypes.SET_REDIO_SHOW_STATE, payload })
+    setRadioShowState: payload => dispatch({ type: actionTypes.SET_REDIO_SHOW_STATE, payload }),
+    setRemoveFromQueue: payload => dispatch({ type: actionTypes.SET_REMOVE_FROM_QUEUE, payload })
   }
 }
 

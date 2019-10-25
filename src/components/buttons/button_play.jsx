@@ -8,6 +8,7 @@ const PlayBtn = props => {
       type="button"
       aria-label="Play"
       onClick={ props.onPlay }
+      disabled={ props.disabled }
     >
       <svg 
         className="svg-icon svg-icon-play" 

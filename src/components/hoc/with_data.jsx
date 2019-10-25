@@ -1,6 +1,5 @@
 import React, { Component as ReactComponent } from 'react';
 import { AudioContext } from '../player/audio/context';
-import AudioService from '../../service/audio_service';
 
 const HocApp = Component => {
   return class extends ReactComponent {
@@ -8,7 +7,6 @@ const HocApp = Component => {
       super(props);
   
       this.audioElement = document.createElement('audio');
-      this.audioService = new AudioService();
       this.nextPlay = false;
     }
 
@@ -16,6 +14,7 @@ const HocApp = Component => {
       this.audioElement.addEventListener('play', this.handlerPlay);
       this.audioElement.addEventListener('pause', this.handlerPause);
       this.audioElement.addEventListener('canplay', this.handlerCanPlay);
+      this.audioElement.addEventListener('loadedmetadata', this.loadData);
 
       this.loadSrc();
     }
@@ -24,16 +23,32 @@ const HocApp = Component => {
       this.audioElement.removeEventListener('play', this.handlerPlay);
       this.audioElement.removeEventListener('canplay', this.handlerCanPlay);
       this.audioElement.removeEventListener('pause', this.handlerPause);
+      this.audioElement.removeEventListener('loadedmetadata', this.loadData);
   
       this.audioElement = null;
     }
 
     componentDidUpdate(prevProps) {
       const { playingShowId } = this.props;
+      const { currentTime, duration } = this.audioElement;
+
       if (playingShowId !== prevProps.playingShowId && prevProps.playingShowId) {
         this.nextPlay = true;
 
         this.nextShow(this.nextPlay);
+      }
+
+      if (currentTime === duration && !this.nextPlay) {
+        // eslint-disable-next-line
+        const a = this.props.playlist.findIndex(item => {
+          if (item.id === playingShowId) {
+            return item;
+          }
+        });
+
+        if (a < this.props.playlist.length-1) {
+          this.props.setRadioShowState(this.props.playlist[a+1].id);
+        }
       }
     }
   
@@ -47,6 +62,10 @@ const HocApp = Component => {
       } else {
         this.audioElement.play();
       }
+    }
+
+    loadData = () => {
+      this.props.setLoading();
     }
   
     updateProgress = () => {
@@ -78,10 +97,10 @@ const HocApp = Component => {
   
     setProgress = ({holding, translate, barWidth}) => {
       const { setAudioProgress, duration } = this.props;
-      const progress = (translate / barWidth) * duration;
+      const progress = ((translate / barWidth) * duration).toFixed(6);
 
       if (holding) {
-        setAudioProgress(progress);
+        setAudioProgress(parseFloat(progress));
       }
     }
   
@@ -95,6 +114,7 @@ const HocApp = Component => {
     loadSrc = () => {
       this.audioElement.src = this.props.playlist[0].podcast;
       this.audioElement.load();
+      this.props.setLoading();
     }
   
     nextShow = (nextPlay = false) => {
@@ -108,11 +128,21 @@ const HocApp = Component => {
           this.audioElement.play();
           this.nextPlay = false;
         }
+      })
+      .finally(() => {
+        this.props.setLoading();
       });
     }
 
     getData = playingShowId => {
-      return this.audioService.getAttributePodcast(playingShowId);
+      // eslint-disable-next-line
+      const dataItem = this.props.playlist.filter(item => {
+        if (item.id === playingShowId) {
+          return item;
+        }
+      })
+  
+      return Promise.resolve(...dataItem);
     }
   
     clearInterval = () => {
@@ -129,9 +159,6 @@ const HocApp = Component => {
             audio: this.audioElement
           }}
         >
-          {/* <Spotlight
-            onSwitchControlPlaying={ this.handlerSwitchControlPlaying }
-          /> */}
           <Component
             { ...this.props }
             onSetProgress={ this.setProgress }
@@ -139,7 +166,7 @@ const HocApp = Component => {
             onUpdateProgress={ this.updateProgress }
             onSwitchControlPlaying={ this.handlerSwitchControlPlaying }
             onUpdateAudioTime={ this.updateAudioCurrentTime }
-            onService={ this.getData }
+            onUpdateData={ this.getData }
           />
         </AudioContext.Provider>
       )

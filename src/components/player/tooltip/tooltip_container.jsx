@@ -14,12 +14,14 @@ class TooltipContainer extends Component {
 
   handlerMouseMove = evt => {
     const translate = evt.clientX - evt.target.getBoundingClientRect().left;
-    const barWidth = evt.target.getBoundingClientRect().width - 7;
+    const barWidth = evt.target.getBoundingClientRect().width;
 
-    this.props.setPostionTooltipBar({
-      translate,
-      barWidth
-    });
+    if (translate >= 0) {
+      this.props.setPostionTooltipBar({
+        translate,
+        barWidth
+      });
+    }
   }
 
   render() {

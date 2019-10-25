@@ -2,6 +2,7 @@
 :root {
   --player-background-color: #fff;
   --default-border-color: #dedee3;
+  --default-background-color: #fff;
   --main-text-color: #32323d;
   --default-hover-color: #efeff2;
   --slider-track-default-color: #dedee3;
@@ -15,12 +16,16 @@
   --slider-track-active: #32323d;
   --queuelist-background-color: #fff;
   --queuelist-head-border-color: #e5e5e5; 
-  --queue-item-active-color: #f8f8f8;
+  --queue-item-active-color: #efeff2;
+  --player-loader-color: #32323d;
+  --cloudcast-queue-action-remove-color: #92929d;
+  --cloudcast-queue-action-remove-color-hover: #42424d;
 }
 
 [data-theme=dark] {
   --player-background-color: #23232d;
   --default-border-color: #32323d;
+  --default-background-color: #191922;
   --main-text-color: #fff;
   --slider-track-default-color: #42424d;
   --default-hover-color: #32323d;
@@ -33,6 +38,9 @@
   --queuelist-background-color: #121216;
   --queuelist-head-border-color: #262626; 
   --queue-item-active-color: #23232d;
+  --player-loader-color: #fff;
+  --cloudcast-queue-action-remove-color: #92929d;
+  --cloudcast-queue-action-remove-color-hover: #fff;
 }
 
 .player {
@@ -109,4 +117,9 @@
 
 .input-control {
   display: none;
+}
+
+.thumb-vertical {
+  background-color: #c2c2ca;
+  border-radius: 3px;
 }
