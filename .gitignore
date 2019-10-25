@@ -7,7 +7,7 @@
 
 /dist
 /build
-src/songs
+/songs
 
 npm-debug.log*
 
