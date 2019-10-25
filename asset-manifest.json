@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/podcast-player/static/css/main.1b973732.chunk.css",
-    "main.js": "/podcast-player/static/js/main.b480da88.chunk.js",
-    "main.js.map": "/podcast-player/static/js/main.b480da88.chunk.js.map",
-    "runtime-main.js": "/podcast-player/static/js/runtime-main.18ffd589.js",
-    "runtime-main.js.map": "/podcast-player/static/js/runtime-main.18ffd589.js.map",
-    "static/js/2.a37fbcec.chunk.js": "/podcast-player/static/js/2.a37fbcec.chunk.js",
-    "static/js/2.a37fbcec.chunk.js.map": "/podcast-player/static/js/2.a37fbcec.chunk.js.map",
-    "index.html": "/podcast-player/index.html",
-    "precache-manifest.679ffb11362d491eeba9c82ed37c6691.js": "/podcast-player/precache-manifest.679ffb11362d491eeba9c82ed37c6691.js",
-    "service-worker.js": "/podcast-player/service-worker.js",
-    "static/css/main.1b973732.chunk.css.map": "/podcast-player/static/css/main.1b973732.chunk.css.map",
-    "static/media/style.css": "/podcast-player/static/media/inverse.ed90d7bca6550746a2a2c5d538d62efe.ed90d7bc.gif"
+    "main.css": "/React-podcast-player/static/css/main.e280c61c.chunk.css",
+    "main.js": "/React-podcast-player/static/js/main.b480da88.chunk.js",
+    "main.js.map": "/React-podcast-player/static/js/main.b480da88.chunk.js.map",
+    "runtime-main.js": "/React-podcast-player/static/js/runtime-main.3b1a4804.js",
+    "runtime-main.js.map": "/React-podcast-player/static/js/runtime-main.3b1a4804.js.map",
+    "static/js/2.a37fbcec.chunk.js": "/React-podcast-player/static/js/2.a37fbcec.chunk.js",
+    "static/js/2.a37fbcec.chunk.js.map": "/React-podcast-player/static/js/2.a37fbcec.chunk.js.map",
+    "index.html": "/React-podcast-player/index.html",
+    "precache-manifest.e772aca82d57aaf78dbe60bcaaf02065.js": "/React-podcast-player/precache-manifest.e772aca82d57aaf78dbe60bcaaf02065.js",
+    "service-worker.js": "/React-podcast-player/service-worker.js",
+    "static/css/main.e280c61c.chunk.css.map": "/React-podcast-player/static/css/main.e280c61c.chunk.css.map",
+    "static/media/style.css": "/React-podcast-player/static/media/inverse.ed90d7bca6550746a2a2c5d538d62efe.ed90d7bc.gif"
   },
   "entrypoints": [
-    "static/js/runtime-main.18ffd589.js",
+    "static/js/runtime-main.3b1a4804.js",
     "static/js/2.a37fbcec.chunk.js",
-    "static/css/main.1b973732.chunk.css",
+    "static/css/main.e280c61c.chunk.css",
     "static/js/main.b480da88.chunk.js"
   ]
 }
