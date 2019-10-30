@@ -16,7 +16,7 @@ const HocApp = Component => {
       this.audioElement.addEventListener('canplay', this.handlerCanPlay);
       this.audioElement.addEventListener('loadedmetadata', this.loadData);
 
-      this.loadSrc();
+      // this.loadSrc();
     }
   
     componentWillUnmount() {
@@ -40,14 +40,14 @@ const HocApp = Component => {
 
       if (currentTime === duration && !this.nextPlay) {
         // eslint-disable-next-line
-        const a = this.props.playlist.findIndex(item => {
+        const indexShow = this.props.playlist.findIndex(item => {
           if (item.id === playingShowId) {
             return item;
           }
         });
 
-        if (a < this.props.playlist.length-1) {
-          this.props.setRadioShowState(this.props.playlist[a+1].id);
+        if (indexShow < this.props.playlist.length-1) {
+          this.props.setRadioShowState(this.props.playlist[indexShow+1].id);
         }
       }
     }
@@ -119,6 +119,9 @@ const HocApp = Component => {
   
     nextShow = (nextPlay = false) => {
       this.getData(this.props.playingShowId)
+      .finally(() => {
+        this.props.setLoading();
+      })
       .then(({ podcast }) => {
         this.audioElement.src = podcast;
         this.audioElement.load();
@@ -128,9 +131,6 @@ const HocApp = Component => {
           this.audioElement.play();
           this.nextPlay = false;
         }
-      })
-      .finally(() => {
-        this.props.setLoading();
       });
     }
 

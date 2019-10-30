@@ -1,7 +1,7 @@
 {
   "name": "podcast-player",
   "version": "0.1.0",
-  "homepage": "https://jrwjunior.github.io/podcast-player/",
+  "homepage": "https://jrwjunior.github.io/React-podcast-player/",
   "private": true,
   "dependencies": {
     "prop-types": "^15.7.2",

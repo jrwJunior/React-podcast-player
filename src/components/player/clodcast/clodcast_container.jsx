@@ -5,8 +5,7 @@ import * as actionTypes from '../../../actions/actionTypes';
 import Cloudcast from './clodcast';
 import './style.css';
 
-class ClodcastContainer extends Component {
-
+class ClodcastContainer extends Component {  
   componentDidMount() {
     this.props.setRadioShowState(this.props.playlist[0].id);
   }
