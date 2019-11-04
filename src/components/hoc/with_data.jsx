@@ -16,7 +16,7 @@ const HocApp = Component => {
       this.audioElement.addEventListener('canplay', this.handlerCanPlay);
       this.audioElement.addEventListener('loadedmetadata', this.loadData);
 
-      // this.loadSrc();
+      this.loadSrc();
     }
   
     componentWillUnmount() {
