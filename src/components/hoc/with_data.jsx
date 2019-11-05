@@ -1,8 +1,7 @@
 import React, { Component as ReactComponent } from 'react';
-import { AudioContext } from '../player/audio/context';
+import { Provider } from '../audio_context/audio_context';
 
-const HocApp = Component => {
-  return class extends ReactComponent {
+const HocApp = Component => class extends ReactComponent {
     constructor(props) {
       super(props);
   
@@ -154,7 +153,7 @@ const HocApp = Component => {
 
     render() {
       return (
-        <AudioContext.Provider 
+        <Provider 
           value={{
             audio: this.audioElement
           }}
@@ -168,10 +167,9 @@ const HocApp = Component => {
             onUpdateAudioTime={ this.updateAudioCurrentTime }
             onUpdateData={ this.getData }
           />
-        </AudioContext.Provider>
+        </Provider>
       )
     }
   }
-}
 
 export default HocApp;

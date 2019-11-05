@@ -14,7 +14,8 @@ class ClodcastContainer extends Component {
     const { playingShowId, setClodcastDetails } = this.props;
 
     if (playingShowId !== prevProps.playingShowId) {
-      this.props.getData(playingShowId, setClodcastDetails);
+      this.props.onUpdateData(playingShowId)
+        .then(({ title:show, ...rest }) => setClodcastDetails({show, ...rest}));
     }
   }
 

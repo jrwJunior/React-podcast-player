@@ -2,14 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../../actions/actionTypes';
-import { AudioContext } from '../audio/context';
 
 import ProgressBar from '../progress/progress';
 import TooltipProgress from '../tooltip/tooltip_container';
 
 class TimeLine extends Component {
-  static contextType = AudioContext;
-
   static propTypes = {
     onSetProgress: PropTypes.func,
     onUpdateProgress: PropTypes.func,
@@ -40,7 +37,7 @@ class TimeLine extends Component {
   }
 
   handlerMouseUp = () => {
-    const { audio } = this.context;
+    const { audio } = this.props;
     const { onUpdateProgress, setHoldProgressBar, progress } = this.props;
 
     if (this.props.holding) {
@@ -59,20 +56,22 @@ class TimeLine extends Component {
     const { onSetProgress, ...rest } = this.props;
 
     return(
-      <ProgressBar
-        playerParams={ rest }
-        onSetProgress={ onSetProgress }
-        onMouseDown={ this.handlerMouseDown }
-        onMouseUp={ this.handlerMouseUp }
-        onMouseOver={ this.handlerMouseOver }
-        onMouseOut={ this.handlerMouseOut }
-        onMouseMove={ this.newMouseMoveFunction }
-      >
-        <TooltipProgress
-          onMouseMove={ this.handlerMouseMove }
-          onChange={ this.handlerChenge }
-        />
-      </ProgressBar>
+      <div className='player-track'>
+        <ProgressBar
+          playerParams={ rest }
+          onSetProgress={ onSetProgress }
+          onMouseDown={ this.handlerMouseDown }
+          onMouseUp={ this.handlerMouseUp }
+          onMouseOver={ this.handlerMouseOver }
+          onMouseOut={ this.handlerMouseOut }
+          onMouseMove={ this.newMouseMoveFunction }
+        >
+          <TooltipProgress
+            onMouseMove={ this.handlerMouseMove }
+            onChange={ this.handlerChenge }
+          />
+        </ProgressBar>
+      </div>
     )
   }
 }

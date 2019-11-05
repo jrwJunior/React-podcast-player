@@ -2,12 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import * as actionTypes from '../../../actions/actionTypes';
-import { AudioContext } from '../audio/context';
 import VolumeBar from './volume';
 import './style.css';
 
 class VolumeContainer extends Component {
-  static contextType = AudioContext;
 
   static propTypes = {
     volume: PropTypes.number,
@@ -26,7 +24,7 @@ class VolumeContainer extends Component {
   }
 
   setVolume = volume => {
-    const { audio } = this.context;
+    const { audio } = this.props;
     
     audio.volume = volume;
     this.props.updatetVolume(volume);

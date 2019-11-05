@@ -8,9 +8,13 @@ import '../style.css';
 
 const Audio = props => {
   return(
-    <Player
-      { ...props }
-    />
+    <div className='player' data-theme={ props.changeMode ? 'dark' : null }>
+      <div className='react-container'>
+        <Player
+          { ...props }
+        />
+      </div>
+    </div>
   )
 }
 

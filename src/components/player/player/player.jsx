@@ -1,4 +1,5 @@
 import React from 'react';
+import { Consumer } from '../../audio_context/audio_context';
 import PropTypes from 'prop-types';
 
 import Controls from '../controls/controls_container';
@@ -16,48 +17,46 @@ const Player = props => {
     onUpdateProgress,
     onSetProgress,
     onClearInterval,
-    onUpdateData,
     onUpdateAudioTime,
     ...rest
   } = props;
 
   return(
     <>
-      <div className='player' data-theme={ props.changeMode ? 'dark' : null }>
-        <div className='react-container'>
+      <Consumer>
+        { ({ audio }) => (
           <Controls
             onSwitchControlPlaying={ onSwitchControlPlaying }
             onSeekForward={ onSeekForward }
             onSeekBack={ onSeekBack }
             onUpdateAudioTime={ onUpdateAudioTime }
+            audio={ audio }
           />
-          <Clodcast
-            { ...rest }
-            getData={ (data, setClodcastDetails) => (
-              onUpdateData(data).then(({ title:show, author, cover }) => {
-                setClodcastDetails({
-                  show,
-                  author,
-                  cover
-                });
-              })
-            )}
+        )}
+      </Consumer>
+      <Clodcast
+        { ...rest }
+      />
+      <Actions/>
+      <Consumer>
+        { ({ audio }) => (
+          <TimeLine
+            onUpdateProgress={ onUpdateProgress }
+            onSetProgress={ onSetProgress }
+            onClearInterval={ onClearInterval }
+            audio={ audio }
           />
-          <Actions/>
-          <div className='player-track'>
-            <TimeLine
-              onUpdateProgress={ onUpdateProgress }
-              onSetProgress={ onSetProgress }
-              onClearInterval={ onClearInterval }
-            />
-          </div>
-          <Volume/>
-          <Nextup
-            onSwitchControlPlaying={ onSwitchControlPlaying }
-            { ...rest }
-          />
-        </div>
-      </div>
+        )}
+      </Consumer>
+      <Consumer>
+        { ({ audio }) => (
+          <Volume audio={ audio }/>
+        )}
+      </Consumer>
+      <Nextup
+        onSwitchControlPlaying={ onSwitchControlPlaying }
+        { ...rest }
+      />
     </>
   )
 }

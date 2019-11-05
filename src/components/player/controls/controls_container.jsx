@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { AudioContext } from '../audio/context';
 import Controls from './controls';
 import './style.css';
 
 class ControlContainer extends Component {
-  static contextType = AudioContext;
-
   handlerSeekForward = () => {
     this.props.onUpdateAudioTime(this.props.progress + 30);
   }
@@ -16,7 +13,7 @@ class ControlContainer extends Component {
   }
 
   handlerPlayerDisabledSeekBack = () => {
-    const { audio } = this.context;
+    const { audio } = this.props;
 
     if (audio.currentTime < 15) {
       return true;
@@ -25,7 +22,7 @@ class ControlContainer extends Component {
   };
 
   handlerPlayerDisabledSeekForward = () => {
-    const { audio } = this.context;
+    const { audio } = this.props;
 
    if (audio.currentTime === audio.duration) {
       return true;
